@@ -1,24 +1,99 @@
-﻿
+﻿@model DicodingWebApp.Models.EmployeeModel
 @{
     ViewBag.Title = "Employee Registration";
 }
 
-<h2>Register Here!</h2>
+<h3>Register Here!</h3>
+<p>Fill in your name and email address, then <strong>Submit</strong> to register.</p>
+<div class="row clearfix">
+    @using (Html.BeginForm("Create", "Employee", FormMethod.Post, new { @autocomplete = "off" }))
+    {
+        <div class="form-group">
+            <div class="col-sm-2">
+                <label>Name</label>
+            </div>
+            <div class="col-sm-10">
+                @Html.TextBoxFor(m => m.Name, new { @class = "form-control", @placeholder = "Enter Name", required = "required", autofocus = "autofocus" })
+            </div>
+            <br />
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2">
+                <label>Email</label>
+            </div>
+            <div class="col-sm-10">
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Enter Email", required = "required" })
+            </div>
+            <br />
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2">
+                <label>Job</label>
+            </div>
+            <div class="col-sm-10">
+                @Html.TextBoxFor(m => m.Job, new { @class = "form-control", @placeholder = "Enter Job", required = "required" })
+            </div>
+        </div>
+        <br /><br />
+        <div class="form-group">
+            <div class="col-sm-2">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <a href="#" onclick="LoadDataIndex()" class="btn btn-default">
+                    <span>Load Data</span>
+                </a>
+            </div>
+            <div class="col-sm-10">
+                @Html.Raw(ViewBag.Message)
+            </div>
+        </div>
+    }
+</div>
 
-<form>
-    <div class="form-group">
-        <label for="exampleInputEmail1">Email address</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-    </div>
-    <div class="form-group">
-        <label for="exampleInputPassword1">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-    </div>
-    <div class="form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Check me out</label>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
 
+<h3>People who are Registered!</h3>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-striped table-hover js-basic-example dataTable" id="table_id">
+        <thead>
+            <tr>
+                <th width="10px">#</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Job</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Job</th>
+                <th>Date</th>
+            </tr>
+        </tfoot>
+        <tbody>
+            @if (ViewBag.EmployeeList != null)
+            {
+                foreach (var item in ViewBag.EmployeeList)
+                {
+                    <tr id="row_@item.EmployeeId">
+                        <td></td>
+                        <td>@item.Name</td>
+                        <td>@item.Email</td>
+                        <td>@item.Job</td>
+                        <td>@string.Format("{0:dd/MM/yyyy}", item.CreatedDate)</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+<script type="text/javascript">
+    var LoadDataIndex = function () {
+        var url = "/Employee/Index";
+
+        window.location.href = url;
+    }
+</script>

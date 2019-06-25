@@ -27,6 +27,35 @@ namespace DicodingWebApp.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult Create(EmployeeModel model)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    using (dicodingdbEntities db = new dicodingdbEntities())
+                    {
+                        Employee emp = new Employee();
+                        emp.Name = model.Name;
+                        emp.Email = model.Email;
+                        emp.Job = model.Job;
+                        emp.CreatedDate = DateTime.Now;
+                        db.Employee.Add(emp);
+                        db.SaveChanges();
+
+                        ModelState.Clear();
+                        ViewBag.Message = "<div class='alert alert-success'>Data Succesfull Added !</div>";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = "<div class='alert alert-danger'>" + ex.Message + "</div>";
+            }
+            return View("Index");
+            //return RedirectToAction("Index");
+        }
 
     }
 }
