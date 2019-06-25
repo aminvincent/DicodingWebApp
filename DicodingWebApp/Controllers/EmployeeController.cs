@@ -21,7 +21,7 @@ namespace DicodingWebApp.Controllers
                     Email = x.Email,
                     Job = x.Job,
                     CreatedDate = x.CreatedDate.Value
-                }).ToList();
+                }).OrderByDescending(x => x.EmployeeId).ToList();
 
                 ViewBag.EmployeeList = query;
             }
