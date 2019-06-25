@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.438
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DicodingWebApp", "DicodingWebApp\DicodingWebApp.csproj", "{54D25274-8599-42B2-9398-14A3C5D29BAB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{54D25274-8599-42B2-9398-14A3C5D29BAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54D25274-8599-42B2-9398-14A3C5D29BAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54D25274-8599-42B2-9398-14A3C5D29BAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54D25274-8599-42B2-9398-14A3C5D29BAB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A048D5E8-24EB-4C01-9810-89F66884A5AC}
+	EndGlobalSection
+EndGlobal
