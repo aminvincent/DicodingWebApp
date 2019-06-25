@@ -19,7 +19,8 @@ namespace DicodingWebApp.Controllers
                     EmployeeId = x.EmployeeId,
                     Name = x.Name,
                     Email = x.Email,
-                    Job = x.Job
+                    Job = x.Job,
+                    CreatedDate = x.CreatedDate.Value
                 }).ToList();
 
                 ViewBag.EmployeeList = query;
